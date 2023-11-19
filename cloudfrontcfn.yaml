@@ -5,7 +5,7 @@ Description: |
 Parameters:
 
   KittensSubDomainName:
-    Description: full domain name like kittens.clarusway.us
+    Description: full domain name like kittens.sahindevops.net
     Type: String
     AllowedPattern: (?!-)[a-zA-Z0-9-.]{1,63}(?<!-)
 Resources:
@@ -50,7 +50,7 @@ Resources:
             - HEAD
           CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
           Compress: true
-          TargetOriginId: osvaldocrf
+          TargetOriginId: sahincrf
           ViewerProtocolPolicy: allow-all
         DefaultRootObject: index.html
         Enabled: true
@@ -59,17 +59,17 @@ Resources:
           - CustomOriginConfig: 
               OriginProtocolPolicy: http-only
             DomainName:  !Select [2, !Split ["/", !GetAtt MyS3Bucket.WebsiteURL]]
-            Id: osvaldocrf
+            Id: sahincrf
         PriceClass: PriceClass_All
         ViewerCertificate: 
-          AcmCertificateArn: arn:aws:acm:us-east-1:046402772087:certificate/f872f3db-ba9d-46df-8c6a-9d165036e8ee
+          AcmCertificateArn: arn:aws:acm:us-east-1:422257619674:certificate/85abfd4b-b168-44f8-9c21-95a9e413e558
           MinimumProtocolVersion: TLSv1.2_2021
           SslSupportMethod: sni-only
 
   MyRoute53:
     Type: AWS::Route53::RecordSetGroup
     Properties:
-      HostedZoneId: Z08348542LMKDSH94CCW6
+      HostedZoneId: Z06285281Z6OTIU884548
       RecordSets: 
       - AliasTarget: 
           DNSName: !GetAtt MyCloudFront.DomainName
